@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import WspFloat from "../components/WspFloat";
 
 export const metadata: Metadata = {
   title: "Sukhi Yoga Burriana",
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang="es">
       <body className="antialiased selection:bg-[#3a4d3a] selection:text-[#f5f2ed]">
         {children}
+        <WspFloat />
       </body>
     </html>
   );

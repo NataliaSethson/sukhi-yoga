@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <div className="bg-[#f5f2ed] min-h-screen font-serif text-[#3a4d3a]">
-      
+
       <Navbar visible={showLanding} onInicioClick={() => setShowLanding(true)} />
 
       <AnimatePresence mode="wait">
@@ -27,20 +27,40 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#f5f2ed] px-6 text-center"
           >
-            <h1 className="text-6xl md:text-8xl mb-8 tracking-tight text-[#3a4d3a]">Sukhi Yoga</h1>
-            <p className="text-xl md:text-2xl font-light italic max-w-3xl mb-12 opacity-90 leading-relaxed text-[#3a4d3a]/80">
+            {/* LOGO EN LA PRESENTACIÓN */}
+            <motion.img
+              src="/logo.png"
+              alt="Sukhi Yoga"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.4, ease: "easeOut" }}
+              // Aumentamos h-40 -> h-56 y md:h-56 -> md:h-80. Bajamos mb-10 -> mb-4
+              className="h-56 md:h-80 w-auto mb-4 object-contain"
+            />
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.8 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              // He ajustado un poco el max-w para que el texto abrace mejor al logo
+              className="text-xl md:text-2xl font-light italic max-w-xl mb-12 leading-relaxed text-[#3a4d3a]"
+            >
               "Un espacio de calma, escucha y transformación donde el cuerpo, la respiración y la mente se encuentran."
-            </p>
-            <button
+            </motion.p>
+
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
               onClick={() => setShowLanding(true)}
               className="group relative border border-[#3a4d3a] px-14 py-5 rounded-full overflow-hidden transition-all duration-500 uppercase text-[10px] tracking-[0.4em]"
             >
               <span className="relative z-10 group-hover:text-[#f5f2ed] transition-colors duration-500">Comenzar el camino</span>
               <div className="absolute inset-0 bg-[#3a4d3a] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            </button>
+            </motion.button>
           </motion.section>
         ) : (
-          <motion.main 
+          <motion.main
             key="content"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -49,7 +69,7 @@ export default function Home() {
           >
             {/* HERO SECTION */}
             <section className="pt-40 pb-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -58,7 +78,7 @@ export default function Home() {
               >
                 <img src="/sala-yoga.webp" alt="Sala Sukhi Yoga" className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-1000" />
               </motion.div>
-              
+
               <div className="space-y-10">
                 <h2 className="text-5xl md:text-6xl leading-tight text-[#3a4d3a]">Nuestra Propuesta</h2>
                 <div className="space-y-6 text-xl font-light leading-relaxed text-[#3a4d3a]/90">
@@ -71,10 +91,10 @@ export default function Home() {
               </div>
             </section>
 
-            {/* SECCIÓN DISCIPLINAS CON ACENTO AZUL */}
+            {/* SECCIÓN DISCIPLINAS */}
             <section className="py-32 bg-white/40 px-6 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#e0eaf0]/30 rounded-full blur-3xl -mr-32 -mt-32" />
-              
+
               <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-20 space-y-4">
                   <h3 className="text-[10px] uppercase tracking-[0.6em] opacity-40">Lo que practicamos</h3>
@@ -82,7 +102,6 @@ export default function Home() {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-16">
-                  {/* Hatha Yoga */}
                   <motion.div whileHover={{ y: -10 }} className="group">
                     <div className="h-80 rounded-[3rem] mb-8 shadow-lg overflow-hidden border-4 border-[#d4e1d4] group-hover:border-[#e0eaf0] transition-colors duration-500">
                       <img src="/hatha-yoga.jpg" alt="Hatha Yoga" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -93,7 +112,6 @@ export default function Home() {
                     </p>
                   </motion.div>
 
-                  {/* Yoga Kurunta */}
                   <motion.div whileHover={{ y: -10 }} className="group">
                     <div className="h-80 rounded-[3rem] mb-8 shadow-lg overflow-hidden border-4 border-[#d4e1d4] group-hover:border-[#e0eaf0] transition-colors duration-500">
                       <img src="/clase2.jpg" alt="Yoga Kurunta" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -104,7 +122,6 @@ export default function Home() {
                     </p>
                   </motion.div>
 
-                  {/* Gestión Emocional */}
                   <motion.div whileHover={{ y: -10 }} className="group">
                     <div className="h-80 rounded-[3rem] mb-8 shadow-lg overflow-hidden border-4 border-[#d4e1d4] group-hover:border-[#e0eaf0] transition-colors duration-500">
                       <img src="/terapeutico.jpg" alt="Gestión Emocional" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -118,7 +135,7 @@ export default function Home() {
               </div>
             </section>
 
-            {/* SECCIÓN FINAL DE INVITACIÓN */}
+            {/* SECCIÓN FINAL */}
             <section className="py-32 px-6 text-center max-w-4xl mx-auto space-y-12">
               <h2 className="text-4xl md:text-5xl leading-tight">¿Sientes que es el momento de empezar?</h2>
               <p className="text-xl font-light opacity-70 italic leading-relaxed">
@@ -134,7 +151,7 @@ export default function Home() {
               </div>
             </section>
 
-            {/* FOOTER GENERAL (Replicado en cada página) */}
+            {/* FOOTER */}
             <footer className="relative border-t border-[#3a4d3a]/5">
               <div className="absolute inset-0 bg-[#e0eaf0]/20 -z-10" />
               <div className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-3 gap-16 text-[#3a4d3a]">
@@ -150,7 +167,7 @@ export default function Home() {
                   <h4 className="text-[10px] uppercase tracking-[0.4em] opacity-40 font-sans font-bold">Conecta</h4>
                   <div className="flex gap-6 text-sm font-light underline underline-offset-4 decoration-[#3a4d3a]/20">
                     <a href="https://instagram.com/sukhiyogabr" target="_blank" className="hover:opacity-50 transition-opacity">Instagram</a>
-                    <a href="https://facebook.com/..." target="_blank" className="hover:opacity-50 transition-opacity">Facebook</a>
+                    <a href="https://www.facebook.com/profile.php?id=61552917985018&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" className="hover:opacity-50 transition-opacity">Facebook</a>
                   </div>
                 </div>
               </div>
