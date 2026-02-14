@@ -5,6 +5,9 @@ import WspFloat from "../components/WspFloat";
 export const metadata: Metadata = {
   title: "Sukhi Yoga Burriana",
   description: "Espacio de yoga, calma y bienestar en el corazón del Raval.",
+  icons: {
+    icon: "/logo.png", 
+  },
 };
 
 export default function RootLayout({
